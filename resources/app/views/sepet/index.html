@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="content">
+		<div class="table-panel">
+			<div class="table-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th isim="YEMEK">YEMEK</th>
+							<th>FİYAT</th>
+							<th>MİKTAR</th>
+							<th>TUTAR</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="urun in urunler">
+							<td isim="YEMEK">
+								<p><span class="title">{!urun.DisplayName!}</span></p>
+								<p ng-show="urun.Description.length>5" class="xxs-hidden"><span class="description">{!urun.Description!}</span></p>
+							</td>
+							<td isim="FİYAT">{!urun.ListPrice!} TL</td>
+							<td class="center" isim="MİKTAR"><input class="miktar-input" maxlength="2" type="text" ng-model="urun.Miktar" ng-change="updateMiktar(urun)"></td>
+							<td isim="TUTAR">{!urun.Total!} TL</td>
+							<td isim="İŞLEM"><button class="_button kirmizi rounded" ng-click="removeProduct(urun)">x</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table-footer">
+				<p style="text-align:center" ng-hide="urunler.length>0">Sepette ürün bulunmamaktadır.</p>
+				<p style="text-align:right;padding-right:57px;" class=""  ng-hide="urunler.length===0">
+					Toplam: <span>{!total!} TL</span><!-- <button class="_button turuncu rounded" style="padding: 11px;">ÖDEME YAP</button> -->
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

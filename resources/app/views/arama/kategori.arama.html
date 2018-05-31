@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="content">	
+		<div>
+			<ul class="breadcrumbs">
+				<li ui-sref="/">Anasayfa</li>
+				<li class="pasif">{!kategori.DisplayName!}</li>
+			</ul>
+		</div>
+		<hr>
+
+		<h3>Bu kategoride toplam {! kategori.Products.length !} adet ürün listelenmiştir.</h3>
+			<ul class="list-search-product" ng-repeat="product in filteredData = (kategori.Products | filter:searchFilter)">
+				<li>
+					<div class="yemek-container">
+						<p class="clearfix" > 
+							<span class="title" style="float:left;">{!product.DisplayName!} </span> 
+							<span style="float:right;">
+								{!product.ListPrice!} TL. 
+								<input class="miktar-input" maxlength="2" type="text" ng-model="product.Miktar" ng-init="product.Miktar=1">
+								<button class="_button yesil pointer" ng-click="addProduct(product)">+</button> 
+							</span>
+						</p>
+						<p ng-show="product.Description.length>5"><span class="description">{!product.Description!}</span></p>
+					</div>
+				</li>
+			</ul>
+	</div>
+</div>

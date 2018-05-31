@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="application">
+	<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+		<base href="http://localhost/ys/public/" />
+		<title>YS - Demo </title>
+
+		<link rel="stylesheet" href="assets/css/compiled/custom-compiled.css" type="text/css" media="screen"/>
+		<script type="text/javascript" src="assets/js/helpers/helper.js"></script>
+		<script type="text/javascript" src="assets/js/libs/angular.min.js"></script>
+		<script type="text/javascript" src="assets/js/libs/angular-ui-router.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+	</head>
+	<body class="bg-global">
+		<div class="full-container" ng-controller="masterController">
+<!-- 			<header>
+				<h1>templates</h1>
+			</header> -->
+				<nav class="navigasyon navigasyon-yemeksepeti">
+					<div class="container">
+						<ul class="navigasyon-links" style="float:left;">
+							<li><a ui-sref="/">Anasayfa</a></li>
+						</ul>
+						
+						<ul class="navigasyon-links" style="float:right;">
+							<li><a ui-sref="root.sepet.init">Sepet <span>{!urunCount!}</span></a></li>
+						</ul>
+					</div>
+				</nav>
+
+
+
+			<div ui-view style="margin-top:80px;"></div>
+			<div class="notify-container xxs-hidden">
+				<div class="notify notify-success" ng-repeat="bildirim in bildirimler">
+					<a href="javascript:void(0);" class="kapat" ng-click="notifyRemove(bildirim)"></a>
+					<p>{!bildirim.message!}</p>
+				</div>
+<!-- 				<div class="notify notify-success" >
+					<a href="javascript:void(0);" class="kapat" ng-click="notifyRemove(bildirim)"></a>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis dolorem ratione impedit numquam modi, voluptatum esse illum voluptas, odit nesciunt debitis quo, eos vitae sint. In corporis sequi harum vitae!</p>
+				</div>
+				<div class="notify notify-success" >
+					<a href="javascript:void(0);" class="kapat" ng-click="notifyRemove(bildirim)"></a>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis dolorem ratione impedit numquam modi, voluptatum esse illum voluptas, odit nesciunt debitis quo, eos vitae sint. In corporis sequi harum vitae!</p>
+				</div>
+				<div class="notify notify-success" >
+					<a href="javascript:void(0);" class="kapat" ng-click="notifyRemove(bildirim)"></a>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis dolorem ratione impedit numquam modi, voluptatum esse illum voluptas, odit nesciunt debitis quo, eos vitae sint. In corporis sequi harum vitae!</p>
+				</div> -->
+			</div>
+		</div>
+		<script type="text/javascript" src="assets/js/compiled/partials.js"></script>
+		<script type="text/javascript" src="assets/js/compiled/app-compiled.js"></script>
+		<script>
+		var application = angular.module("application");
+		application.constant('RESOURCES', (function() {
+		var resource = document.getElementsByTagName("base")[0].getAttribute("href");
+		return {
+			ROOT: resource
+		}
+		})());
+    </script>
+	</body>
+</html>

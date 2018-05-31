@@ -1,0 +1,28 @@
+.breadcrumbs 
+{
+	width:100%;
+	padding-left: 0;
+	color:#000;
+	position: relative;
+	font-family: 'Opens Sans', sans-serif;
+	> li
+	{
+		display: inline;
+		margin-left:10px;
+		&.pasif
+		{
+			color:#747474;
+		}
+		&[ui-sref]
+		{
+			cursor:pointer;
+		}
+		&+li:before
+		{
+			content:"/ ";
+			color: #000;
+
+		}
+	}
+
+}

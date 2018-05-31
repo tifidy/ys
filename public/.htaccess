@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteCond %{REQUEST_FILENAME} !-f
+
+    #This creates a redirect loop for angular
+        #RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    # IF the resource does not exist as an actual directory...
+        RewriteCond %{REQUEST_FILENAME} !-d
+    # OR an actual file...
+        RewriteCond %{REQUEST_FILENAME} !-f
+    # THEN send the traffic to laravel routing
+        RewriteRule ^ index.html [L]
+
+        # Handle Authorization Header
+        RewriteCond %{HTTP:Authorization} .
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>

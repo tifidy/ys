@@ -1,0 +1,58 @@
+.notify-container {
+	position: fixed;
+	width: 400px;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+		@media @xs-mobile {
+			width:100%;
+		}
+		@media @mobile {
+			width:100%;
+		}
+}
+
+
+.notify 
+{
+
+	position: relative;
+	width:100%;
+	height: 60px;
+	margin-bottom: 20px;
+	padding: 10px 27px;
+	transition: all ease-in-out .3s;
+	opacity:1;
+	.kapat:before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 30px;
+		height: 30px;
+		content: "X";
+		color: #fff;
+		
+		text-align: center;
+		line-height: 28px;
+	}
+	p {
+		margin:0;
+
+	}
+	&.notify-success 
+	{
+		background-color:#fff;
+		color:#000;
+		border-left:4px solid green;
+		.kapat:before {
+			background: green;
+		}
+	}
+
+	&.pull-down {
+		bottom: -400px;
+	}
+	&.disappear {
+		opacity:0;
+	}
+}

@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="content">	
+
+		<div class="arama-container">
+			<input class="arama-input" placeholder="YEMEK ARA (Tulum Peynirli Salata,ızgara bonfile etc)" type="text" ng-model="searchFilter" ng-focus="aramaOnFocus('arama')" ng-blur="aramaOnBlur('arama')">
+		</div>
+		<div>
+			<ul ng-hide="searchFilter.length<2" class="list-search-kategori" ng-repeat="kategori in kategoriler.ResultSet">
+				<li ng-show="filteredData.length!=0"><h3 class="pointer" style="margin-bottom: 0;" ng-click="kategoriSec(kategori.Oid)">{!kategori.CategoryDisplayName!}</h3></li>
+				<ul class="list-search-product" ng-repeat="product in filteredData = (kategori.Products | filter:searchFilter)">
+					<li>
+						<div class="yemek-container">
+							<p class="clearfix" > 
+								<span class="title" style="float:left;">{!product.DisplayName!} </span> 
+								<span style="float:right;">
+									{!product.ListPrice!} TL. 
+									<input class="miktar-input" maxlength="2" type="text" ng-model="product.Miktar" ng-init="product.Miktar=1">
+									<button class="_button yesil pointer" ng-click="addProduct(product)">+</button> 
+								</span>
+							</p>
+							<p ng-show="product.Description.length>5"><span class="description">{!product.Description!}</span></p>
+						</div>
+					</li>
+				</ul>
+			</ul>
+		</div>
+	</div>
+</div>
